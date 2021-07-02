@@ -1,0 +1,11 @@
+def sorting():
+	global sequence_array
+	for i in range(1, len(sequence_array)):
+		key = sequence_array[i]
+		j = i-1
+		while j >= 0 and key < sequence_array[j] :
+				sequence_array[j + 1] = sequence_array[j]
+				j -= 1
+		sequence_array[j + 1] = key
+
+sorting()
