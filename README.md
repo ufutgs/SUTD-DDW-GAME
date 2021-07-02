@@ -1,1 +1,3 @@
-# SUTD-DDW-GAME
+# SUTD DDW GAME
+# Initialization:
+  
