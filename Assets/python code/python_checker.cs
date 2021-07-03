@@ -13,7 +13,7 @@ public class python_checker : MonoBehaviour
     void Start()
     {
         submit_btn.onClick.AddListener(submit);
-        userInput.text = "def sorting():\n\tglobal sequence_array\n";
+        userInput.text = "def sorting():\n\tglobal sequence_array\nsorting()";
     }
 
     // Update is called once per frame
