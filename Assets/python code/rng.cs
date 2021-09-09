@@ -7,13 +7,14 @@ using UnityEditor;
 public class rng : MonoBehaviour
 {
     private List<int> sequence = new List<int>();
-    private int[] random_sequence = new int[20];
+    private static int size = 20;
+    private int[] random_sequence = new int[size];
     public GameObject parent;
     public Transform prefab;
     private static string path = "Assets/python code/sequence.txt";
      private void Awake() 
     {
-        for(int i =0;i<20;i++)
+        for(int i =0;i<size; i++)
         {
             sequence.Add(i+1);
         }
@@ -28,16 +29,16 @@ private void rng_function()
     File.WriteAllText(path, string.Empty);
     StreamWriter writer = new StreamWriter(path, true);
     random_sequence = new List<int>(sequence).ToArray();
-    for(int j =0;j<20;j++)
+    for(int j =0;j<size; j++)
     {
         int chosen= Random.Range(j,sequence.Count);
         int change = random_sequence[j];
         random_sequence[j] =  random_sequence[chosen];
          random_sequence[chosen] = change;
-        float color = 0.05f*random_sequence[j];
+        float color = (float)random_sequence[j] / (float)size;
         Transform square = Instantiate(prefab,new Vector3(-10+j*1f,2,0),Quaternion.identity,parent.transform);
         square.gameObject.GetComponent<SpriteRenderer>().color =new Color(color,color,color);
-        if(j!=19)
+        if(j!=size-1)
         { writer.Write( random_sequence[j]+",");}else{
              writer.Write( random_sequence[j]);}
     }
